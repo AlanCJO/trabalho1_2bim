@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block product %}
+
+<a href="{% url 'entrada:entrada_new' %}">Novo</a>
+    <ol>
+        {% for nota in nota_entrada %}
+            <li>Nota de Entrada: {{ nota }}</li>
+        {% endfor %}
+    </ol>
+
+{% endblock %}

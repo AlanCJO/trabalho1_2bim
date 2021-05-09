@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block product %}
+<a href="{% url 'produto:listar' %}">Produtos</a>
+<h1>Aplicação estoqueWeb INDEX.HTML</h1>
+<p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Praesent
+    sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh
+    . Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Proin eget to
+    rtor risus. Vivamus suscipit tortor eget felis porttitor volutpat. Nulla porttitor accu
+    msan tincidunt. Nulla porttitor accumsan tincidunt. Vestibulum ante ipsum primis in fau
+    cibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet
+    aliquam vel, ullamcorper sit amet ligula. Praesent sapien massa, convallis a pellentes
+    que nec, egestas non nisi.</p>
+
+<h2>{{ mensagem }}</h2>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block product %}
+<a href="{% url 'produto:novo' %}">Novo</a>
+
+<table>
+    <thead>
+        <tr>
+            <td>Produto</td>
+            <td>Slug</td>
+            <td>Cor</td>
+            <td>Descrição</td>
+            <td>Preço</td>
+            <td>Quantidade</td>
+            <td colspan="2">Ação</td>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for produto in produtos%}
+        <tr>
+            <td>{{ produto.produto }}</td>
+            <td>{{ produto.slug }}</td>
+            <td>{{ produto.cor }}</td>
+            <td>{{ produto.descricao }}</td>
+            <td>{{ produto.preco }}</td>
+            <td>{{ produto.quantidade }}</td>
+            <td><a href="{% url 'produto:alterar' produto.id %}">Alterar</a></td>
+            <td><a href="{% url 'produto:deletar' produto.id %}">Deletar</a></td>
+
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'index' %}">Voltar</a>
+{% endblock %}
