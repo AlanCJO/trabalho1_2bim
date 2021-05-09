@@ -1,4 +1,4 @@
-###Exercício:
+### Exercício:
 1. Crie a aplicação ‘entrada’ e faça um CRUD. Essa aplicação é destinada
 para o registro de entrada de produtos da nossa aplicação de estoque.
 O procedimento deve seguir os seguintes passos:
