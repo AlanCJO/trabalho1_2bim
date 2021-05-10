@@ -42,8 +42,8 @@ def entrada_update(request, pk):
     nota_entrada = NotasEntradas.objects.get(pk=pk)
     quantidade_anterior = nota_entrada.quantidade
     produto_anterior = nota_entrada.produto
-    preco_anterior = nota_entrada.preco
     produto_id = nota_entrada.produto_id
+
     if request.method == 'POST':
         form = FormNotasEntradas(request.POST, instance=nota_entrada)
         if form.is_valid():
@@ -53,13 +53,13 @@ def entrada_update(request, pk):
                 form.cleaned_data['produto'].quantidade += \
                     form.cleaned_data['quantidade'] - quantidade_anterior
             else:
-                # db manager
-                # teste = Produtos.objects.db_manager().get(pk=3)
                 produto = Produtos.objects.get(pk=produto_id)
-                produto.quantidade = produto.quantidade - quantidade_anterior
-                produto.save()
+                if produto.quantidade >= quantidade_anterior:
+                    produto.quantidade = produto.quantidade - quantidade_anterior
+                    produto.save()
                 form.cleaned_data['produto'].quantidade += form.cleaned_data['quantidade']
 
+            form.cleaned_data['produto'].preco = form.cleaned_data['preco']
             form.cleaned_data['produto'].save_base()
             form.save()
 
