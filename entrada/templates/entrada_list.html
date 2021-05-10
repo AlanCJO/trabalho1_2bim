@@ -2,11 +2,36 @@
 
 {% block product %}
 
+<h2>Notas de Entrada</h2>
 <a href="{% url 'entrada:entrada_new' %}">Novo</a>
-    <ol>
-        {% for nota in nota_entrada %}
-            <li>Nota de Entrada: {{ nota }}</li>
+
+<table>
+    <thead>
+        <tr>
+            <td>Produto</td>
+            <td>Quantidade</td>
+            <td>Preço</td>
+            <td>Criado</td>
+            <td>Modificado</td>
+            <td colspan="2">Ação</td>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for nota in notas_entrada %}
+        <tr>
+            <td>{{ nota }}</td>
+            <td>{{ nota.quantidade }}</td>
+            <td>{{ nota.preco }}</td>
+            <td>{{ nota.criado }}</td>
+            <td>{{ nota.modificado }}</td>
+            <td><a href="{% url 'entrada:entrada_update' nota.id %}">Alterar</a></td>
+            <td><a href="{% url 'entrada:entrada_delete' nota.id %}">Deletar</a></td>
+        </tr>
+
         {% endfor %}
-    </ol>
+    </tbody>
+</table>
 
 {% endblock %}

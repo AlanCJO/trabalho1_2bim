@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block product %}
+
+<form action="{% url 'entrada:entrada_update' pk %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="button">Enviar</button>
+</form>
+
+{% endblock %}
