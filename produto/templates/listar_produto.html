@@ -2,6 +2,7 @@
 
 {% block product %}
 <a href="{% url 'produto:novo' %}">Novo</a>
+<a href="{% url 'entrada:entrada_list' %}">Entrada</a>
 
 <table>
     <thead>
@@ -18,7 +19,7 @@
 
     <tbody>
 
-        {% for produto in produtos%}
+{% comment %}        {% for produto in produtos%}
         <tr>
             <td>{{ produto.produto }}</td>
             <td>{{ produto.slug }}</td>
@@ -31,7 +32,7 @@
 
         </tr>
 
-        {% endfor %}
+        {% endfor %}{% endcomment %}
     </tbody>
 </table>
 
