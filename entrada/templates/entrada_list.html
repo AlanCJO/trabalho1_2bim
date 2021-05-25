@@ -1,37 +1,57 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/produto/produto_list.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    <a class="lista" href="{% url 'produto:listar' %}">Lista de Produtos</a>
+{% endblock %}
 
 {% block product %}
+    <div class="container modal-body">
 
-<h2>Notas de Entrada</h2>
-<a href="{% url 'entrada:entrada_new' %}">Novo</a>
+        <h1 class=title>Notas de Entrada</h1>
 
-<table>
-    <thead>
-        <tr>
-            <td>Produto</td>
-            <td>Quantidade</td>
-            <td>Preço</td>
-            <td>Criado</td>
-            <td>Modificado</td>
-            <td colspan="2">Ação</td>
-        </tr>
-    </thead>
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Criado</th>
+                <th>Modificado</th>
+                <th colspan="2">Ações</th>
+            </tr>
+            </thead>
 
-    <tbody>
+            <tbody>
+            {% for nota in notas_entrada %}
+                <tr>
+                    <td>{{ nota }}</td>
+                    <td>{{ nota.quantidade }}</td>
+                    <td>{{ nota.preco }}</td>
+                    <td>{{ nota.criado }}</td>
+                    <td>{{ nota.modificado }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'entrada:entrada_update' nota.id %}">Alterar</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="{% url 'entrada:entrada_delete' nota.id %}" onclick="alerta(event)">Deletar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-        {% for nota in notas_entrada %}
-        <tr>
-            <td>{{ nota }}</td>
-            <td>{{ nota.quantidade }}</td>
-            <td>{{ nota.preco }}</td>
-            <td>{{ nota.criado }}</td>
-            <td>{{ nota.modificado }}</td>
-            <td><a href="{% url 'entrada:entrada_update' nota.id %}">Alterar</a></td>
-            <td><a href="{% url 'entrada:entrada_delete' nota.id %}">Deletar</a></td>
-        </tr>
+           <div id="new-product">
+            <a class="btn btn-success"  href="{% url 'entrada:entrada_new' %}">Nova Nota</a>
+        </div>
+    </div>
 
-        {% endfor %}
-    </tbody>
-</table>
+{% endblock %}
 
+{% block script %}
+    <script src="{% static 'js/sweetalert.js' %}" defer></script>
 {% endblock %}

@@ -1,11 +1,28 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/produto/product_edit_add.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    <a class="lista" href="{% url 'entrada:entrada_list' %}">Notas de Entrada</a>
+{% endblock %}
 
 {% block product %}
+    <h1>Alterar Nota</h1>
+    <form action="{% url 'entrada:entrada_update' pk %}" method="post">
+        <div class="form-group col-md-6 container">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </div>
+        <div class="button">
+            <button class="btn btn-primary" type="submit">Alterar</button>
+        </div>
+    </form>
 
-<form action="{% url 'entrada:entrada_update' pk %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" name="button">Enviar</button>
-</form>
+{% endblock %}
 
+{% block script %}
+    <script defer src="{% static 'js/produto/includeClass_add_edit.js' %}"></script>
 {% endblock %}

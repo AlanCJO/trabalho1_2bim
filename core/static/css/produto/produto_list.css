@@ -1,0 +1,39 @@
+body > * {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1.title {
+    text-align: center;
+    padding: 0.8rem
+}
+
+#new-product {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem
+}
+
+th[colspan="2"] {
+    text-align: center;
+}
+
+#edit-product {
+    text-align: right
+}
+
+/* Estilizando o modal de alerta */
+div.swal2-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.swal2-actions > button {
+    width: 40%
+}
+
+.pagination {
+    display: flex;
+    justify-content: center
+}

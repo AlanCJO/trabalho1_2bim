@@ -1,12 +1,29 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/produto/product_edit_add.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    <a class="lista" href="{% url 'produto:listar' %}">Lista de Produtos</a>
+{% endblock %}
 
 {% block product %}
 
-<p>Alterar produto</p>
-<form action="{% url 'produto:alterar' pk %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Salvar</button>
-</form>
+    <h1>Alterar produto</h1>
+    <form action="{% url 'produto:alterar' pk %}" method="post">
+        <div class="form-group col-md-6 container">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </div>
+        <div class="button">
+            <button class="btn btn-primary" type="submit">Salvar</button>
+        </div>
+    </form>
 
+{% endblock %}
+
+{% block script %}
+    <script defer src="{% static 'js/produto/includeClass_add_edit.js' %}"></script>
 {% endblock %}
