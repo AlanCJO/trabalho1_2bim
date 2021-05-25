@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block navbar %}
+    <a class="lista" href="{% url 'produto:listar' %}">Lista de Produtos</a>
+{% endblock %}
+
 {% block product %}
     <main>
         <svg class="figure" viewBox="0 0 508 268" aria-hidden="true">

@@ -137,7 +137,6 @@ footer {
 
 .option {
     display: flex;
-    /* grid-template-columns: min-content 1fr; */
     gap: 10px;
     box-sizing: border-box;
     text-decoration: none;

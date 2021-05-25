@@ -1,38 +1,68 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/produto/produto_list.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    <a class="lista" href="{% url 'entrada:entrada_list' %}">Notas de Entrada</a>
+{% endblock %}
 
 {% block product %}
-    <a href="{% url 'produto:novo' %}">Novo</a>
-    <a href="{% url 'entrada:entrada_list' %}">Entrada</a>
+    <div class="container modal-body">
 
-    <table>
-        <thead>
-        <tr>
-            <td>Produto</td>
-            <td>Slug</td>
-            <td>Cor</td>
-            <td>Descrição</td>
-            <td>Preço</td>
-            <td>Quantidade</td>
-            <td colspan="2">Ação</td>
-        </tr>
-        </thead>
+        <h1 class="title">Lista de Produtos</h1>
 
-        <tbody>
-
-        {% for produto in produtos %}
+        <table id="table_id" class="table">
+            <thead class="thead-dark">
             <tr>
-                <td>{{ produto.produto }}</td>
-                <td>{{ produto.slug }}</td>
-                <td>{{ produto.cor }}</td>
-                <td>{{ produto.descricao }}</td>
-                <td>{{ produto.preco }}</td>
-                <td>{{ produto.quantidade }}</td>
-                <td><a href="{% url 'produto:alterar' produto.id %}">Alterar</a></td>
-                <td><a href="{% url 'produto:deletar' produto.id %}">Deletar</a></td>
+                <th>Produto</th>
+                <th>Slug</th>
+                <th>Cor</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th colspan="2">Ações</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
 
-    <a href="{% url 'index' %}">Voltar</a>
+            <tbody>
+
+            {% for produto in produtos %}
+                <tr>
+                    <td>{{ produto.produto }}</td>
+                    <td>{{ produto.slug }}</td>
+                    <td>{{ produto.cor }}</td>
+                    <td>{{ produto.descricao }}</td>
+                    <td>{{ produto.preco }}</td>
+                    <td>{{ produto.quantidade }}</td>
+                    <td id="edit-product">
+                        <a class="btn btn-primary" href="{% url 'produto:alterar' produto.id %}">Alterar</a>
+                    </td>
+                    <td>
+                        <a onclick="alerta(event)" class="btn btn-danger" href="{% url 'produto:deletar' produto.id %}">Deletar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div id="new-product">
+            <a class="btn btn-success" href="{% url 'produto:novo' %}">Adicionar Produto</a>
+        </div>
+    </div>
 {% endblock %}
+
+{% block script %}
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable();
+        });
+    </script>
+{% endblock %}
+
+{#{% block script %}#}
+{#    <script src="{% static 'js/script.js' %}" defer></script>#}
+{#    <script src="{% static 'js/sweetalert.js' %}" defer></script>#}
+{#{% endblock %}#}
