@@ -14,7 +14,7 @@
 
         <h1 class="title">Lista de Produtos</h1>
 
-        <table id="table_id" class="table">
+        <table id="myTable" class="table">
             <thead class="thead-dark">
             <tr>
                 <th>Produto</th>
@@ -23,7 +23,8 @@
                 <th>Descrição</th>
                 <th>Preço</th>
                 <th>Quantidade</th>
-                <th colspan="2">Ações</th>
+                <th>Ações</th>
+                <th>Ações</th>
             </tr>
             </thead>
 
@@ -55,14 +56,5 @@
 {% endblock %}
 
 {% block script %}
-    <script>
-        $(document).ready(function () {
-            $('#table_id').DataTable();
-        });
-    </script>
+    <script src="{% static 'js/sweetalert.js' %}" defer></script>
 {% endblock %}
-
-{#{% block script %}#}
-{#    <script src="{% static 'js/script.js' %}" defer></script>#}
-{#    <script src="{% static 'js/sweetalert.js' %}" defer></script>#}
-{#{% endblock %}#}
