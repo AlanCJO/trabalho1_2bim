@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="{% static 'css/produto/produto_list.css' %}">
 {% endblock %}
 
+{% block navbar0 %}
+    <a class="lista" href="{% url 'notaSaida:saida_list' %}">Notas de Saida</a>
+{% endblock %}
+
 {% block navbar %}
     <a class="lista" href="{% url 'entrada:entrada_list' %}">Notas de Entrada</a>
 {% endblock %}

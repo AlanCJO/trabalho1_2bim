@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{% block navbar0 %}
+        <a class="logo" href="/" rel="noopener">
+               Home
+        </a>
+{% endblock %}
+
 {% block navbar %}
     <a class="lista" href="{% url 'produto:listar' %}">Lista de Produtos</a>
 {% endblock %}

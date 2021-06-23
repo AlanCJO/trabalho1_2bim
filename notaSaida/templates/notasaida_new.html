@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/produto/product_edit_add.css' %}">
+{% endblock %}
+
+{% block product %}
+    <h1>Nova Nota de Saída</h1>
+    <form action="{% url 'notaSaida:saida_new' %}" method="post">
+        <div class="form-group col-md-6 container">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </div>
+        <div class="button">
+            <button class="btn btn-primary" type="submit">Salvar</button>
+        </div>
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script defer src="{% static 'js/produto/includeClass_add_edit.js' %}"></script>
+{% endblock %}

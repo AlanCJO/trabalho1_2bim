@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/produto/produto_list.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    <a class="lista" href="{% url 'produto:listar' %}">Lista de Produtos</a>
+{% endblock %}
+
+{% block product %}
+    <div class="container modal-body">
+
+        <h1 class=title>Notas de Saída</h1>
+
+        <table id="myTable" class="table">
+            <thead class="thead-light">
+            <tr>
+                <th>Produto</th>
+                <th>Numero</th>
+                <th>Quantidade</th>
+                <th>Valor</th>
+                <th>Criado</th>
+                <th>Modificado</th>
+                <th>Ações</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for nota in notas_saida %}
+                <tr>
+                    <td>{{ nota }}</td>
+                    <td>{{ nota.numero_nota }}</td>
+                    <td>{{ nota.quantidade }}</td>
+                    <td>{{ nota.valor }}</td>
+                    <td>{{ nota.criado }}</td>
+                    <td>{{ nota.modificado }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'notaSaida:saida_update' nota.id %}">Alterar</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="{% url 'notaSaida:saida_delete' nota.id %}" onclick="alerta(event)">Deletar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+           <div id="new-product">
+            <a class="btn btn-success"  href="{% url 'notaSaida:saida_new' %}">Nova Nota</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/sweetalert.js' %}" defer></script>
+{% endblock %}

@@ -6,5 +6,6 @@ urlpatterns = [
     path('', index, name="index"),
     path('produto/', include('produto.urls', namespace='produto')),
     path('entrada/', include('entrada.urls', namespace='entrada')),
+    path('saida/', include('notaSaida.urls', namespace='saida')),
     path('admin/', admin.site.urls),
 ]
